@@ -3,10 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0f1115">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f2f7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Budgetly">
+<meta name="format-detection" content="telephone=no">
 <title>Budgetly</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
@@ -14,33 +18,38 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<header class="navbar" id="navbar"><span class="nav-title" id="nav-title">Budgetly</span></header>
+
 <div id="app">
-  <header class="top">
-    <div>
-      <p class="eyebrow" id="eyebrow"></p>
+  <header class="large-title">
+    <div class="lt-row">
       <h1 id="title">Budgetly</h1>
+      <button class="circle-btn glass" id="settings-btn" type="button" aria-label="Settings">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
     </div>
-    <button class="icon-btn" id="settings-btn" type="button" aria-label="Settings">⚙︎</button>
+    <p class="subtitle" id="eyebrow"></p>
   </header>
-  <div class="month-nav" id="month-nav">
-    <button type="button" class="icon-btn sm" data-act="month" data-d="-1" aria-label="Previous month">‹</button>
-    <button type="button" class="month-label" id="month-label" data-act="month-today"></button>
-    <button type="button" class="icon-btn sm" data-act="month" data-d="1" aria-label="Next month">›</button>
+  <div class="month-nav">
+    <button type="button" class="circle-btn sm glass" data-act="month" data-d="-1" aria-label="Previous month"><svg class="i" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button type="button" class="month-pill glass" id="month-label" data-act="month-today"></button>
+    <button type="button" class="circle-btn sm glass" data-act="month" data-d="1" aria-label="Next month"><svg class="i" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
   <main id="view"></main>
 </div>
 
-<nav class="tabbar" aria-label="Main">
-  <button class="tb" data-tab="home" type="button"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
-  <button class="tb" data-tab="activity" type="button"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>Activity</button>
-  <button class="fab" id="add-btn" type="button" aria-label="Add transaction">+</button>
-  <button class="tb" data-tab="budgets" type="button"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg>Budgets</button>
-  <button class="tb" data-tab="insights" type="button"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Insights</button>
+<nav class="dock" aria-label="Main">
+  <div class="tabbar glass">
+    <button class="tb" data-tab="home" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+    <button class="tb" data-tab="activity" type="button"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Activity</button>
+    <button class="tb" data-tab="budgets" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg>Budgets</button>
+    <button class="tb" data-tab="insights" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Insights</button>
+  </div>
+  <button class="fab glass" id="add-btn" type="button" aria-label="Add transaction"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
 </nav>
 
 <div id="sheet-root"></div>
-<div class="toast hidden" id="toast" role="status"></div>
-
+<div id="toast-root"></div>
 <script src="app.js"></script>
 </body>
 </html>

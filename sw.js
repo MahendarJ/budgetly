@@ -1,5 +1,5 @@
 /* Budgetly service worker — caches the app so it opens offline. Bump CACHE when you ship an update. */
-const CACHE = 'budgetly-v1';
+const CACHE = 'budgetly-v2';
 const ASSETS = [
   './',
   './index.html',
